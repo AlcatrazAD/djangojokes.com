@@ -1,4 +1,7 @@
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.views.generic import ( 
+    CreateView, DetailView, ListView, UpdateView, DeleteView, )
+
+from django.urls import reverse_lazy
 
 from .models import Joke
 
@@ -13,6 +16,9 @@ class JokeListView(ListView):
 class JokeDetailView(DetailView):
     model = Joke
 
+class JokeDeleteView(DeleteView):
+    model = Joke
+    success_url = reverse_lazy('jokes:list')
 
 
 class JokeUpdateView(UpdateView):
