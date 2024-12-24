@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'pages.apps.PagesConfig',
     'jokes.apps.JokesConfig',
+    'users.apps.UsersConfig',
+
     
 ]
 
@@ -81,8 +83,12 @@ WSGI_APPLICATION = 'djangojokes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jokes',
+        'USER': 'postgres',
+        'PASSWORD': 'Rottiedog',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -104,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#AUTHENTICATION SETTINGS
+AUTH_USER_MODEL = 'users.CustomUser'
 
 
 # Internationalization
