@@ -1,11 +1,13 @@
 from django.urls import path
 
-from .views import JokeListView
+from .views import (
+    JokeCreateView, JokeDetailView, JokeListView, JokeUpdateView
+)
 
-from .views import JokeDetailView, JokeListView
 app_name = 'jokes'
 urlpatterns = [
+    path('joke/<int:pk>/update/', JokeUpdateView.as_view(), name='update'),
     path('', JokeListView.as_view(), name='list'),
     path('joke/<int:pk>', JokeDetailView.as_view(), name='detail'),
-    
+    path('joke/create/', JokeCreateView.as_view(), name='create'),
 ]
